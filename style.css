@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@400;600&display=swap");
+/* ============= Hero Start ============= */
+
+html {
+    background-color: rgb(234, 231, 233);
+}
+
+h1 {
+    font-family: "Noto Sans Tamil", sans-serif;
+    font-weight: 600;
+}
+
+p {
+    font-family: "Noto Sans Tamil", sans-serif;
+}
+
+h1 > span {
+    color: rgb(255, 174, 0);
+}
+
+section {
+    min-height: 100vh;
+}
+
+@keyframes pulse_01 {
+    0% {
+        transform: scale(0.94);
+        box-shadow: 0 0 0 0 rgb(27, 84, 255);
+        transition: 0.3s;
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+        transition: 0.3s;
+    }
+    100% {
+        transform: scale(0.94);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        transition: 0.3s;
+    }
+}
+
+.hero {
+    background-image: url(images/wave.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-custom {
+    font-family: "Barlow", sans-serif;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    color: #fff;
+    animation: pulse_01 2s ease infinite;
+}
+
+.btn h3 {
+    font-size: 1.8em;
+}
+
+.btn h5 {
+    font-size: 1.2em;
+}
+
+.btn p {
+    font-size: 1.1em;
+}
+
+.btn.btn-custom.btn-blue {
+    background-color: rgb(37, 191, 212);
+}
+
+.btn.btn-custom.btn-orange {
+    background-color: rgb(241, 143, 87);
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+.card-header:first-child {
+    border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0;
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.track {
+    position: relative;
+    background-color: #ddd;
+    height: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 50px;
+}
+.track .step {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 25%;
+    margin-top: -18px;
+    text-align: center;
+    position: relative;
+}
+.track .step.active:before {
+    background: #ff5722;
+}
+.track .step::before {
+    height: 7px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 18px;
+}
+.track .step.active .icon {
+    background: #ee5435;
+    color: #fff;
+}
+.track .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 100%;
+    background: #ddd;
+}
+.track .step.active .text {
+    font-weight: 400;
+    color: #000;
+}
+.track .text {
+    display: block;
+    margin-top: 7px;
+}
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+.itemside .aside {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.img-sm {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+}
+ul.row,
+ul.row-sm {
+    list-style: none;
+    padding: 0;
+}
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px;
+}
+.itemside .title {
+    display: block;
+    margin-bottom: 5px;
+    color: #212529;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.btn-warning {
+    color: #ffffff;
+    background-color: #ee5435;
+    border-color: #ee5435;
+    border-radius: 1px;
+}
+.btn-warning:hover {
+    color: #ffffff;
+    background-color: #ff2b00;
+    border-color: #ff2b00;
+    border-radius: 1px;
+}
