@@ -10,7 +10,8 @@ h1 {
     font-weight: 600;
 }
 
-p {
+p,
+h5 {
     font-family: "Noto Sans Tamil", sans-serif;
 }
 
@@ -65,6 +66,10 @@ section {
     background-size: cover;
 }
 
+.hero .btn-home {
+    margin-top: 90px;
+}
+
 .btn-custom {
     font-family: "Barlow", sans-serif;
     text-transform: uppercase;
@@ -72,6 +77,7 @@ section {
     font-weight: 700;
     color: #ffffff;
     margin-top: 10px;
+    border-radius: 25px;
 }
 
 .btn:hover {
@@ -83,9 +89,9 @@ section {
     font-size: 1.8em;
 }
 
-.btn h5 {
+/* .btn h5 {
     font-size: 1.2em;
-}
+} */
 
 .btn p {
     font-size: 1.1em;
@@ -118,16 +124,20 @@ section {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    box-shadow: 10px 10px 15px 0 rgba(19, 251, 247, 0.542);
 }
+
 .card-header:first-child {
     border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0;
 }
+
 .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .track {
     position: relative;
     background-color: #ddd;
@@ -138,6 +148,7 @@ section {
     margin-bottom: 60px;
     margin-top: 50px;
 }
+
 .track .step {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
@@ -147,9 +158,11 @@ section {
     text-align: center;
     position: relative;
 }
+
 .track .step.active:before {
-    background: #ff5722;
+    background: #35e5f2;
 }
+
 .track .step::before {
     height: 7px;
     position: absolute;
@@ -158,10 +171,12 @@ section {
     left: 0;
     top: 18px;
 }
+
 .track .step.active .icon {
-    background: #ee5435;
+    background: #1fbae9;
     color: #fff;
 }
+
 .track .icon {
     display: inline-block;
     width: 40px;
