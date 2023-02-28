@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            .select2 {
+                width: 100% !important;
+            }
+        </style>
+        <title>Index</title>
+    </head>
+    <body>
+        <main>
+            <section class="hero">
+                <!-- container pasien lama dan masukan nomor rekam medis -->
+                <div class="container">
+                    <!-- input no. rekam medis -->
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="card mt-5 mb-3">
+                                <div class="card-header text-center">
+                                    <h3>Masukan Data Pasien</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="pasien_form" method="post">
+										<div class="row mb-3">
+											<!-- nomor rekam medis -->
+											<label for="no_rm" class="col-sm-1 col-form-label">No. RM</label>
+											<div class="col-sm-5">
+												<input class="form-control" type="text" id="no_rm" name="no_rm" value="<?php echo isset($pasien->no_rm) ? $pasien->no_rm : ''; ?>" maxlength="20" autocomplete="off" readonly placeholder="[ Otomatis ]" />
+											</div>
+											<!-- nomor telepon -->
+											<div class="col-sm-2">
+												<select class="form-control select2" id="jenis_telepon_1" name="jenis_telepon_1" required>
+													<?php
+														$jenisTelepon1 = isset($pasien->jenis_telepon_1) ? (int) $pasien->jenis_telepon_1 : 0;
+														foreach ($jenis_telepon_list as $key => $value) {
+															$selected = $jenisTelepon1 === (int) $key ? ' selected="selected"' : '';
+															echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+														}
+													?>
+												</select>
+											</div>
+											<div class="col-sm-4">
+												<input class="form-control" type="text" id="no_telepon_1" name="no_telepon_1" value="<?php echo isset($pasien->no_telepon_1) ? $pasien->no_telepon_1 : ''; ?>" maxlength="25" autocomplete="off" />
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="nama" class="col-sm-1 col-form-label">Nama</label>
+											<div class="col-sm-5">
+												<input class="form-control" type="text" id="nama" name="nama" value="<?php echo isset($pasien->nama) ? $pasien->nama : ''; ?>" maxlength="60" autocomplete="off" />
+											</div>
+
+											<div class="col-sm-2" style="padding-right:0;">
+												<select class="form-control select2" id="jenis_telepon_2" name="jenis_telepon_2">
+													<?php
+														$jenisTelepon2 = isset($pasien->jenis_telepon_2) ? (int) $pasien->jenis_telepon_2 : 0;
+														foreach ($jenis_telepon_list as $key => $value) {
+															$selected = $jenisTelepon2 === (int) $key ? ' selected="selected"' : '';
+															echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+														}
+													?>
+												</select>
+											</div>
+											<div class="col-sm-4">
+												<input class="form-control" type="text" id="no_telepon_2" name="no_telepon_2" value="<?php echo isset($pasien->no_telepon_2) ? $pasien->no_telepon_2 : ''; ?>" maxlength="25" autocomplete="off" />
+											</div>
+											
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label col-md-3">Nama <span class="text-danger">*</span></label>
+													<div class="col-md-3" style="padding-right:1px;">
+														<select class="form-control" id="title_id" name="title_id">
+														<?php
+															$jenisKelamin = 0;
+															$titleId = isset($pasien->title_id) ? (int) $pasien->title_id : 0;
+															$selected = $titleId === 0 ? ' selected="selected"' : '';
+															echo '<option value="" data-jenis_kelamin="0"'.$selected.'></option>';
+															foreach ($title_list as $title) {
+																$selected = $titleId === (int) $title->id ? ' selected="selected"' : '';
+																$jenisKelamin = $titleId == 0 ? $title->jenis_kelamin : $jenisKelamin;
+																echo '<option value="'.$title->id.'" data-jenis_kelamin="'.$title->jenis_kelamin.'"'.$selected.'>'.$title->singkatan.'</option>';
+															}
+														?>
+														</select>
+													</div>
+													<div class="col-md-6" style="padding-left:1px;">
+														<input class="form-control" type="text" id="nama" name="nama" value="<?php echo isset($pasien->nama) ? $pasien->nama : ''; ?>" maxlength="60" autocomplete="off" />
+													</div>
+												</div>
+												<?php
+													$jenisKelamin = isset($pasien->jenis_kelamin) ? $pasien->jenis_kelamin : $jenisKelamin;
+												?>
+												<div class="form-group">
+													<label class="control-label col-md-3">Jenis Kelamin <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<label class="radio-inline">
+															<input class="styled" type="radio" id="jenis_kelamin_1" name="jenis_kelamin" value="1" <?php echo $jenisKelamin == 1 ? 'checked="checked"' : ''; ?> />
+															Laki-laki
+														</label>
+														<label class="radio-inline">
+															<input class="styled" type="radio" id="jenis_kelamin_2" name="jenis_kelamin" value="2" <?php echo $jenisKelamin == 2 ? 'checked="checked"' : ''; ?> />
+															Perempuan
+														</label>
+													</div>
+													<div class="col-md-9">
+														<label id="jenis_kelamin-error" class="error" for="jenis_kelamin"></label>
+													</div>
+												</div>
+												<?php
+													$kewarganegaraan = isset($pasien->kewarganegaraan) ? (int) $pasien->kewarganegaraan : 1;
+												?>
+												<div class="form-group">
+													<label class="control-label col-md-3">Kewarganegaraan</label>
+													<div class="col-md-9">
+														<label class="radio-inline">
+															<input class="styled" type="radio" id="kewarganegaraan_1" name="kewarganegaraan" value="1" <?php echo $kewarganegaraan === 1 ? 'checked="checked"' : ''; ?> />
+															WNI
+														</label>
+														<label class="radio-inline">
+															<input class="styled" type="radio" id="kewarganegaraan_2" name="kewarganegaraan" value="2" <?php echo $kewarganegaraan === 2 ? 'checked="checked"' : ''; ?> />
+															WNA
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-md-3">Alamat <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<textarea class="form-control" id="alamat" name="alamat" rows="2" maxlength="255"><?php echo isset($pasien->alamat) ? $pasien->alamat : ''; ?></textarea>
+													</div>
+												</div>
+												<?php
+													$display = "";
+													if ($kewarganegaraan == 2) {
+														$display = "display:none;";
+													}
+												?>
+												<div class="form-group" id="provinsi_section" style="<?php echo $display ?>">
+													<label class="col-md-3 control-label"></label>
+													<div class="col-md-9">
+														<div class="form-group">
+															<label class="control-label col-md-4" for="provinsi_id" style="padding-left:0;">Provinsi <span class="text-danger">*</span></label>
+															<div class="col-md-8" style="padding:0;">
+																<select class="form-control" id="provinsi_id" name="provinsi_id">
+																<?php
+																	$provinsiId = isset($pasien->provinsi_id) ? (int) $pasien->provinsi_id : '';
+																	$selected = $provinsiId === 0 ? ' selected="selected"' : '';
+																	echo '<option value=""'.$selected.'>[ Provinsi: ]</option>';
+																	foreach ($provinsi_list as $provinsi) {
+																		$selected = $provinsiId === (int) $provinsi->id ? ' selected="selected"' : '';
+																		echo '<option value="'.$provinsi->id.'"'.$selected.'>'.$provinsi->nama.'</option>';
+																	}
+																?>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="kabupaten_section" style="<?php echo $display ?>">
+													<label class="col-md-3 control-label"></label>
+													<div class="col-md-9">
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="kabupaten_id" style="padding-left:0;">Kabupaten/Kota <span class="text-danger">*</span></label>
+															<div class="col-md-8" style="padding:0;">
+																<div class="input-group">
+																	<select class="form-control" id="kabupaten_id" name="kabupaten_id">
+																	<?php
+																		$kabupatenId = isset($pasien->kabupaten_id) ? (int) $pasien->kabupaten_id : (int) $kabupaten_list[0]->id;
+																		$selected = $kabupatenId === 0 ? ' selected="selected"' : '';
+																		echo '<option value=""'.$selected.'>[ Kabupaten/Kota: ]</option>';
+																		foreach ($kabupaten_list as $kabupaten) {
+																			$selected = $kabupatenId === (int) $kabupaten->id ? ' selected="selected"' : '';
+																			echo '<option value="'.$kabupaten->id.'"'.$selected.'>'.$kabupaten->nama.'</option>';
+																		}
+																	?>
+																	</select>
+																	<span class="input-group-addon" id="kabupaten_spinner" style="display:none;"><i class="icon-spinner2 spinner"></i></span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="kecamatan_section" style="<?php echo $display ?>">
+													<label class="col-md-3 control-label"></label>
+													<div class="col-md-9">
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="kecamatan_id" style="padding-left:0;">Kecamatan <span class="text-danger">*</span></label>
+															<div class="col-md-8" style="padding:0;">
+																<div class="input-group">
+																	<select class="form-control" id="kecamatan_id" name="kecamatan_id">
+																	<?php
+																		$kecamatanId = isset($pasien->kecamatan_id) ? (int) $pasien->kecamatan_id : (int) $kecamatan_list[0]->id;
+																		$selected = $kecamatanId === 0 ? ' selected="selected"' : '';
+																		echo '<option value=""'.$selected.'>[ Kecamatan: ]</option>';
+																		foreach ($kecamatan_list as $kecamatan) {
+																			$selected = $kecamatanId === (int) $kecamatan->id ? ' selected="selected"' : '';
+																			echo '<option value="'.$kecamatan->id.'"'.$selected.'>'.$kecamatan->nama.'</option>';
+																		}
+																	?>
+																	</select>
+																	<span class="input-group-addon" id="kecamatan_spinner" style="display:none;"><i class="icon-spinner2 spinner"></i></span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="kelurahan_section" style="<?php echo $display ?>">
+													<label class="col-md-3 control-label"></label>
+													<div class="col-md-9">
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="kelurahan_id" style="padding-left:0;">Kelurahan/Desa <span class="text-danger">*</span></label>
+															<div class="col-md-8" style="padding:0;">
+																<div class="input-group">
+																	<select class="form-control" id="kelurahan_id" name="kelurahan_id">
+																	<?php
+																		$kelurahanId = isset($pasien->kelurahan_id) ? (int) $pasien->kelurahan_id : (int) $kelurahan_list[0]->id;
+																		$selected = $kelurahanId === 0 ? ' selected="selected"' : '';
+																		echo '<option value=""'.$selected.'>[ Kelurahan/Desa: ]</option>';
+																		foreach ($kelurahan_list as $kelurahan) {
+																			$selected = $kelurahanId === (int) $kelurahan->id ? ' selected="selected"' : '';
+																			echo '<option value="'.$kelurahan->id.'"'.$selected.'>'.$kelurahan->nama.'</option>';
+																		}
+																	?>
+																	</select>
+																	<span class="input-group-addon" id="kelurahan_spinner" style="display:none;"><i class="icon-spinner2 spinner"></i></span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="kodepos_section" style="<?php echo $display ?>">
+													<label class="col-md-3 control-label"></label>
+													<div class="col-md-9">
+														<div class="form-group">
+															<label class="col-md-4 control-label" for="kodepos" style="padding-left:0;">Kodepos <span class="text-danger">*</span></label>
+															<div class="col-md-8" style="padding:0;">
+																<input class="form-control" type="text" id="kodepos" name="kodepos" value="<?php echo isset($pasien->kodepos) ? $pasien->kodepos : ''; ?>" maxlength="12" autocomplete="off" />
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">No. Identitas <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<div class="col-md-4" style="padding-left:0;padding-right:2px;">
+															<select class="form-control" id="jenis_identitas" name="jenis_identitas">
+																<?php
+																	$jenisIdentitas = isset($pasien->jenis_identitas) ? (int) $pasien->jenis_identitas : 0;
+																	$selected = $jenisIdentitas === 0 ? ' selected="selected"' : '';
+																	echo '<option value=""'.$selected.'>[ Jenis ID: ]</option>';
+																	foreach ($jenis_identitas_list as $key => $value) {
+																		$selected = $jenisIdentitas === (int) $key ? ' selected="selected"' : '';
+																		echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+																	}
+																?>
+															</select>
+														</div>
+														<div class="col-md-8" style="padding-left:0;padding-right:0;">
+															<input class="form-control" type="text" id="no_identitas" name="no_identitas" value="<?php echo isset($pasien->no_identitas) ? $pasien->no_identitas : ''; ?>" maxlength="30" autocomplete="off" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<div class="col-md-3" style="padding-right:0;">
+														<select class="form-control" id="jenis_telepon_1" name="jenis_telepon_1">
+															<?php
+																$jenisTelepon1 = isset($pasien->jenis_telepon_1) ? (int) $pasien->jenis_telepon_1 : 0;
+																foreach ($jenis_telepon_list as $key => $value) {
+																	$selected = $jenisTelepon1 === (int) $key ? ' selected="selected"' : '';
+																	echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+																}
+															?>
+														</select>
+													</div>
+													<div class="col-md-9">
+														<input class="form-control" type="text" id="no_telepon_1" name="no_telepon_1" value="<?php echo isset($pasien->no_telepon_1) ? $pasien->no_telepon_1 : ''; ?>" maxlength="25" autocomplete="off" />
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-md-3" style="padding-right:0;">
+														<select class="form-control" id="jenis_telepon_2" name="jenis_telepon_2">
+															<?php
+																$jenisTelepon2 = isset($pasien->jenis_telepon_2) ? (int) $pasien->jenis_telepon_2 : 0;
+																foreach ($jenis_telepon_list as $key => $value) {
+																	$selected = $jenisTelepon2 === (int) $key ? ' selected="selected"' : '';
+																	echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+																}
+															?>
+														</select>
+													</div>
+													<div class="col-md-9">
+														<input class="form-control" type="text" id="no_telepon_2" name="no_telepon_2" value="<?php echo isset($pasien->no_telepon_2) ? $pasien->no_telepon_2 : ''; ?>" maxlength="25" autocomplete="off" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Tempat Lahir <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="<?php echo isset($pasien->tempat_lahir) ? $pasien->tempat_lahir : ''; ?>" maxlength="25" autocomplete="off" />
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Tanggal Lahir <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<input type="hidden" id="tanggal_lahir" name="tanggal_lahir" value="<?php echo isset($pasien->tanggal_lahir) ? $pasien->tanggal_lahir : ''; ?>" />
+														<input class="form-control" type="text" id="disp_tanggal_lahir" name="disp_tanggal_lahir" value="<?php echo isset($pasien->disp_tanggal_lahir) ? $pasien->disp_tanggal_lahir : ''; ?>" autocomplete="off">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Umur</label>
+													<div class="col-md-9">
+														<div class="col-md-2" style="padding: 0;">
+															<input class="form-control" type="text" id="umur_tahun" value="" maxlength="3" readonly="readonly">
+														</div>
+														<div class="col-md-2" style="padding: 0;">
+															<label style="padding-top: 7px;">&nbsp;Tahun</label>
+														</div>
+														<div class="col-md-2" style="padding: 0;">
+															<input class="form-control" type="text" id="umur_bulan" value="" maxlength="2" readonly="readonly">
+														</div>
+														<div class="col-md-2" style="padding: 0;">
+															<label style="padding-top: 7px;">&nbsp;Bulan</label>
+														</div>
+														<div class="col-md-2" style="padding: 0;">
+															<input class="form-control" type="text" id="umur_hari" value="" maxlength="2" readonly="readonly">
+														</div>
+														<div class="col-md-2" style="padding: 0;">
+															<label style="padding-top: 7px;">&nbsp;Hari</label>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Golongan Darah <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<div class="input-group col-md-12">
+															<select class="form-control" id="golongan_darah" name="golongan_darah">
+															<?php
+																$golonganDarah = isset($pasien->golongan_darah) ? (int) $pasien->golongan_darah : 0;
+																$selected = $golonganDarah === 0 ? ' selected="selected"' : '';
+																echo '<option value=""'.$selected.'>[ Golongan Darah: ]</option>';
+																foreach ($golongan_darah_list as $key => $value) {
+																	$selected = $golonganDarah === (int) $key ? ' selected="selected"' : '';
+																	echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+																}
+															?>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Agama</label>
+													<div class="col-md-9">
+														<div class="input-group col-md-12">
+															<select class="form-control" id="agama" name="agama">
+															<?php
+																$agama = isset($pasien->agama) ? (int) $pasien->agama : 0;
+																$selected = $agama === 0 ? ' selected="selected"' : '';
+																echo '<option value="0"'.$selected.'>[ Agama: ]</option>';
+																foreach ($agama_list as $key => $value) {
+																	$selected = $agama === (int) $key ? ' selected="selected"' : '';
+																	echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+																}
+															?>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Suku</label>
+													<div class="col-md-9">
+														<div class="input-group col-md-12">
+															<select class="form-control" id="suku" name="suku">
+															<?php
+																$suku = isset($pasien->suku) ? (int) $pasien->suku : 0;
+																$selected = $suku === 0 ? ' selected="selected"' : '';
+																echo '<option value="0"'.$selected.'>[ Suku: ]</option>';
+																foreach ($suku_list as $s) {
+																	$selected = $suku === (int) $s->id ? ' selected="selected"' : '';
+																	echo '<option value="'.$s->id.'"'.$selected.'>'.$s->nama.'</option>';
+																}
+															?>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!--div class="form-group">
+													<label class="control-label col-md-3">Suku</label>
+													<div class="col-md-9">
+														<input class="form-control" type="text" id="suku" name="suku" value="" maxlength="25" autocomplete="off" />
+													</div>
+												</div-->
+												<div class="form-group">
+													<label class="col-md-3 control-label">Status Kawin</label>
+													<div class="col-md-9">
+														<div class="input-group col-md-12">
+															<select class="form-control" id="status_kawin" name="status_kawin">
+															<?php
+																$statusKawin = isset($pasien->status_kawin) ? (int) $pasien->status_kawin : 0;
+																$selected = $statusKawin === 0 ? ' selected="selected"' : '';
+																echo '<option value="0"'.$selected.'>[ Status Kawin: ]</option>';
+																foreach ($status_kawin_list as $key => $value) {
+																	$selected = $statusKawin === (int) $key ? ' selected="selected"' : '';
+																	echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
+																}
+															?>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Pendidikan <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<div class="input-group col-md-12">
+															<select class="form-control" id="pendidikan_id" name="pendidikan_id">
+															<?php
+																$pendidikanId = isset($pasien->pendidikan_id) ? (int) $pasien->pendidikan_id : 0;
+																$selected = $pendidikanId === 0 ? ' selected="selected"' : '';
+																echo '<option value=""'.$selected.'>[ Pendidikan: ]</option>';
+																foreach ($pendidikan_list as $pendidikan) {
+																	$selected = $pendidikanId === (int) $pendidikan->id ? ' selected="selected"' : '';
+																	echo '<option value="'.$pendidikan->id.'"'.$selected.'>'.$pendidikan->nama.'</option>';
+																}
+															?>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-3 control-label">Pekerjaan <span class="text-danger">*</span></label>
+													<div class="col-md-9">
+														<div class="input-group col-md-12">
+															<select class="form-control" id="pekerjaan_id" name="pekerjaan_id">
+															<?php
+																$pekerjaanId = isset($pasien->pekerjaan_id) ? (int) $pasien->pekerjaan_id : 0;
+																$selected = $pekerjaanId === 0 ? ' selected="selected"' : '';
+																echo '<option value=""'.$selected.'>[ Pekerjaan: ]</option>';
+																foreach ($pekerjaan_list as $pekerjaan) {
+																	$selected = $pekerjaanId === (int) $pekerjaan->id ? ' selected="selected"' : '';
+																	echo '<option value="'.$pekerjaan->id.'"'.$selected.'>'.$pekerjaan->nama.'</option>';
+																}
+															?>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-3 control-label">&nbsp;</label>
+													<div class="col-md-9">
+														<div class="checkbox">
+															<label>
+																<input class="styled" type="checkbox" id="status" name="status" value="1" <?php echo isset($pasien->status) && (int) $pasien->status == 1 ? "checked" : ""; ?>/> Aktif
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>	
+										<div>
+											<input type="hidden" id="id" name="id" value="<?php echo isset($pasien->id) ? $pasien->id : 0; ?>" />
+											<input type="hidden" id="uid" name="uid" value="<?php echo isset($pasien->uid) ? $pasien->uid : ''; ?>" />
+										</div>
+									</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".select2").select2({
+                    theme: "bootstrap-5",
+                });
+            });
+        </script>
+    </body>
+</html>

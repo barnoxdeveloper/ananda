@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cetak Rujukan</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body {
+                font-size: 12px;
+            }
+
+            .wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .column {
+                width: calc(33.33% - 20px);
+                margin: 5px;
+                padding: 5px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: left;
+                text-align: left;
+            }
+
+            .column img {
+                width: 60%;
+            }
+
+            .column-2 {
+                width: calc(66.5% - 20px);
+                margin: 5px;
+                padding: 5px;
+                box-sizing: border-box;
+                text-align: left;
+            }
+
+            .column-3 {
+                width: calc(100% - 100px);
+                margin: 10px;
+                padding: 8px 80px 8px 8px;
+                box-sizing: border-box;
+                text-align: right;
+            }
+
+            .column-4 {
+                width: 50%;
+                padding: 5px;
+                box-sizing: border-box;
+                text-align: left;
+            }
+
+            .column-5 {
+                width: 45%;
+                margin: 5px;
+                padding: 5px;
+                text-align: left;
+            }
+
+            .column-6 {
+                width: 40%;
+                margin: 5px;
+                padding: 5px;
+                text-align: left;
+            }
+
+            .label-value {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .label {
+                margin-right: 1rem;
+                text-align: left;
+                flex-basis: 15%;
+            }
+
+            .value {
+                text-align: left;
+                flex-basis: 85%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="column">
+                <img src="../images/bpjs-logo.png" alt="" srcset="" />
+            </div>
+            <div class="column">
+                <p>
+                    SURAT RUJUKAN <br />
+                    RS ANANDA BABELAN
+                </p>
+            </div>
+            <div class="column">
+                <span id="no">No. 0132R0840223K004871</span>
+                <span id="tanggal">Tgl. 28 Februari 2023</span>
+            </div>
+
+            <div class="column-5">
+                <div class="label-value">
+                    <span class="label">Kepada Yth</span>
+                    <span class="value">: JANTUNG DAN PEMBULUH DARAH RSUD CHASBULLAH A. KOTA BEKASI</span>
+                </div>
+                <div class="label-value">
+                    <span class="label"></span>
+                    <span class="value">&nbsp;Sp./Sub. Anak</span>
+                </div>
+            </div>
+            <div class="column-6">
+                <span>== Rujukan Penuh == </span>
+                <br />
+                <span>Rawat Jalan</span>
+            </div>
+
+            <div class="column-2">
+                <div class="label-value">
+                    <span>Mohon Pemeriksaan dan Penanganan Lebih Lanjut :</span>
+                </div>
+                <div class="label-value">
+                    <span class="label">No.Kartu</span>
+                    <span class="value" id="no-kartu">: 0002520679419</span>
+                </div>
+                <div class="label-value">
+                    <span class="label">Nama Peserta</span>
+                    <span class="value" id="nama-peserta">: HANYDA ANGGRAINA UTAMI (Perempuan)</span>
+                </div>
+                <div class="label-value">
+                    <span class="label">Tgl.Lahir</span>
+                    <span class="value" id="tanggal-lahir">: 8 Juni 1981</span>
+                </div>
+                <div class="label-value">
+                    <span class="label">Diagnosa</span>
+                    <span class="value" id="diagnosa">: Congestive heart failure</span>
+                </div>
+                <div class="label-value">
+                    <span class="label">Rencana Inap</span>
+                    <span class="value" id="rencana-inap">: 28 Februari 2023</span>
+                </div>
+                <div class="label-value">
+                    <span>Demikian atas bantuannya,diucapkan banyak terima kasih.</span>
+                </div>
+            </div>
+            <div class="column-4">
+                <span id="tanggal-rujukan-berlaku">* Rujukan Berlaku Sampai Dengan 29 Mei 2023</span>
+                <br />
+                <span id="tanggal-rencana-berkunjung">* Tgl.Rencana Berkunjung 28 Februari 2023</span>
+            </div>
+            <div class="column-4">
+                <span>Mengetahui DPJP,</span>
+                <br />
+                <p id="nama-mengetahui">..................................</p>
+            </div>
+            <div class="column-4">
+                <p id="tanggal-entri">Tgl.Entri: 28-02-2023 | Tgl.Cetak: 28-02-2023 14:51 PM</p>
+            </div>
+        </div>
+    </body>
+</html>

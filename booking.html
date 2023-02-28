@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <title>Index</title>
+    </head>
+    <body>
+        <main>
+            <section class="hero">
+                <!-- container kode booking -->
+                <div class="container">
+                    <div class="row" id="row-step-booking">
+                        <div class="col-12 mt-3 mb-3">
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    <div class="track">
+                                        <div class="step active" id="step-checkin-booking">
+                                            <span class="icon"> 1 </span>
+                                            <span class="text">CHECKIN</span>
+                                        </div>
+                                        <div class="step" id="step-no-booking">
+                                            <span class="icon"> 2 </span>
+                                            <span class="text"> NO BOOKING</span>
+                                        </div>
+                                        <div class="step" id="step-nurse-station-booking">
+                                            <span class="icon"> 3 </span>
+                                            <span class="text"> KE NURSE STATION </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- input kode booking -->
+                    <div class="row justify-content-center" id="row-kode-booking">
+                        <div class="col-md-12">
+                            <div class="card mt-5 mb-3">
+                                <div class="card-header text-center">
+                                    <h3>Masukan 3 Angka Kode Booking</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="#">
+                                        <div class="row justify-content-center g-4 mb-5">
+                                            <div class="col-md-6 text-center">
+                                                <div class="form-group">
+                                                    <label for="kode_booking" class="form-label"
+                                                        >3 Angka Belakang Kode Booking<span class="text-danger">*</span></label
+                                                    >
+                                                    <div class="input-group">
+                                                        <span class="input-group-text" id="span-kode-booking-default"></span>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="kode_booking"
+                                                            name="kode_booking"
+                                                            id="kode_booking"
+                                                            autofocus
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center g-4 mb-5">
+                                            <div class="col-md-6 text-center">
+                                                <div class="form-group">
+                                                    <label for="tanggal_lahir_booking" class="form-label"
+                                                        >Tanggal Lahir<span class="text-danger">*</span></label
+                                                    >
+                                                    <input
+                                                        type="date"
+                                                        name="tanggal_lahir_booking"
+                                                        id="tanggal_lahir_booking"
+                                                        class="form-control"
+                                                        value=""
+                                                        autofocus
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center text-center mt-2">
+                                            <div class="col-md-3">
+                                                <button type="submit" class="btn btn-lg btn-success btn-simpan">
+                                                    <i class="fa fa-search"></i>
+                                                    Cari Data
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- input konfirmasi kode booking -->
+                    <div class="row justify-content-center" id="row-konfirmasi-data-kode-booking">
+                        <div class="col-md-12">
+                            <div class="card mt-5 mb-3">
+                                <div class="card-header text-center">
+                                    <h3>Konfirmasi Data Booking</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="#">
+                                        <div class="row g-4 mb-5">
+                                            <div class="col-md-4 text-start">
+                                                <p>No Booking</p>
+                                                <p>Tanggal Booking</p>
+                                                <p>No. Rekam Medis</p>
+                                                <p>Layanan</p>
+                                                <p>Dokter</p>
+                                                <p>Jadwal Praktek</p>
+                                                <p>Nama</p>
+                                                <p>Jenis Kelamin</p>
+                                                <p>Tanggal Lahir</p>
+                                                <p>Umur</p>
+                                                <p>No. Telepon</p>
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-8 text-start">
+                                                <p>: <b>BRJ-230207.123</b></p>
+                                                <p>: <b>31/12/2016</b></p>
+                                                <p>: <b>123456</b></p>
+                                                <p>: <b>Umum</b></p>
+                                                <p>: <b>Abcde</b></p>
+                                                <p>: <b>08:00 - 11:00</b></p>
+                                                <p>: <b>Abcde</b></p>
+                                                <p>: <b>Laki-Laki</b></p>
+                                                <p>: <b>29/12/2016</b></p>
+                                                <p>: <b>6 Tahun</b></p>
+                                                <p>: <b>082182747533</b></p>
+                                                <p>: <b>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, aliquam!</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center text-center mt-2">
+                                            <div class="col-md-12">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-lg btn-danger"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modalBookingTidakDitemukan"
+                                                >
+                                                    <i class="fa fa-times"></i>
+                                                    Tidak Sesuai
+                                                </button>
+                                                <button type="submit" class="btn btn-lg btn-success ms-2 btn-simpan">
+                                                    <i class="fa fa-check-double"></i>
+                                                    Konfirmasi
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Modal -->
+        <!-- modal booking tidak ditemukan  -->
+        <div
+            class="modal fade"
+            id="modalBookingTidakDitemukan"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="modalBookingTidakDitemukanLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalBookingTidakDitemukanLabel">Data Tidak Sesuai</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="text-center">Silahkan Menghubungi Admin di Loket.</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="close-modal-booking-tidak-ditemukan">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            $(document).ready(function () {
+                var date = new Date();
+                var formattedDate =
+                    "BRJ." +
+                    date.getFullYear().toString().substr(-2) +
+                    ("0" + (date.getMonth() + 1)).slice(-2) +
+                    ("0" + date.getDate()).slice(-2) +
+                    ".";
+                $("#span-kode-booking-default").text(formattedDate);
+
+                $("#close-modal-booking-tidak-ditemukan").click(function () {
+                    location.reload();
+                });
+            });
+        </script>
+    </body>
+</html>
