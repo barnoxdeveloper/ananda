@@ -247,3 +247,23 @@ p {
     border-color: #ff2b00;
     border-radius: 1px;
 }
+
+.doctor-info img {
+    border-radius: 50%;
+}
+
+.doctor-info h2,
+h3 {
+    margin-top: 25px;
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+table th {
+    text-align: center !important;
+}
