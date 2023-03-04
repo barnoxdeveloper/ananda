@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@400;600&display=swap");
+/* ============= Hero Start ============= */
+
+html {
+    background-color: rgb(234, 231, 233);
+}
+
+h1 {
+    font-family: "Noto Sans Tamil", sans-serif;
+    font-weight: 600;
+}
+
+p,
+h5 {
+    font-family: "Noto Sans Tamil", sans-serif;
+}
+
+h1 > span {
+    color: rgb(255, 174, 0);
+}
+
+section {
+    min-height: 100vh;
+}
+
+.hero {
+    background-image: url(images/wave.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.doctor-info img {
+    border-radius: 50%;
+}
+
+.doctor-info h2 {
+    margin-top: 25px;
+    font-weight: 600;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+table th {
+    text-align: center !important;
+}
+
+.table-striped-solid tbody tr:nth-of-type(odd) {
+    background-color: #f5f5f5;
+}
+
+.table-striped-solid tbody tr:nth-of-type(even) {
+    background-color: #fff;
+}
+
+.table-striped-solid td,
+.table-striped-solid th {
+    border: 1px solid #ccc;
+}
+
+/* .card-antrian {
+    height: 200px;
+}
+
+.card-loket {
+    height: 200px;
+} */
+
+.card-loket .card-body {
+    height: 100%; /* fill the entire height of the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+/* @media screen and (max-width: 768px) {
+    .card-loket {
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-loket {
+        height: 100px;
+    }
+} */
+
+footer {
+    background-color: #1277fb;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
