@@ -19,7 +19,7 @@
             crossorigin="anonymous"
         />
         <!-- custom css -->
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <title>Menu 2</title>
     </head>
     <body>
@@ -33,21 +33,15 @@
                                     <div class="track">
                                         <div class="step active">
                                             <span class="icon"> 1 </span>
-                                            <span class="text"
-                                                >PILIH JAMINAN</span
-                                            >
+                                            <span class="text">PILIH JAMINAN</span>
                                         </div>
                                         <div class="step active">
                                             <span class="icon"> 2 </span>
-                                            <span class="text">
-                                                AMBIL ANTRIAN</span
-                                            >
+                                            <span class="text"> AMBIL ANTRIAN</span>
                                         </div>
                                         <div class="step">
                                             <span class="icon"> 3 </span>
-                                            <span class="text">
-                                                DAFTAR LOKET
-                                            </span>
+                                            <span class="text"> DAFTAR LOKET </span>
                                         </div>
                                     </div>
                                 </div>
@@ -74,8 +68,7 @@
                                         </p>
                                         <hr />
                                         <p class="text-danger">
-                                            * Nomor Antrian berlaku pada hari
-                                            cetak
+                                            * Nomor Antrian berlaku pada hari cetak
                                             <br />
                                             Terima Kasih Atas Kunjungan Anda .
                                         </p>
@@ -83,29 +76,20 @@
                                 </div>
                             </div>
                             <div class="mt-2 text-center">
-                                <a
-                                    href="index.html"
-                                    class="btn btn-danger py-3 m-1 rounded"
-                                >
+                                <a href="index.html" class="btn btn-danger py-3 m-1 rounded">
                                     <h5>
                                         <i class="fa fa-arrow-circle-left"></i>
                                         BATAL
                                     </h5>
                                 </a>
-                                <button
-                                    class="btn btn-success py-3 m-1 rounded"
-                                    onclick="printContent('containerToPrint')"
-                                >
+                                <button class="btn btn-success py-3 m-1 rounded" onclick="printContent('containerToPrint')">
                                     <h5><i class="fa fa-print"></i> CETAK</h5>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="text-center btn-home">
-                        <a
-                            href="index.html"
-                            class="btn btn-warning py-3 rounded"
-                        >
+                        <a href="index.html" class="btn btn-warning py-3 rounded">
                             <h5>
                                 <i class="fa fa-home"></i>
                                 Menu Utama
@@ -134,11 +118,7 @@
                 var windowUrl = "about:blank";
                 var uniqueName = new Date();
                 var windowName = "Print" + uniqueName.getTime();
-                var printWindow = window.open(
-                    windowUrl,
-                    windowName,
-                    "left=50000,top=50000,width=0,height=0"
-                );
+                var printWindow = window.open(windowUrl, windowName, "left=50000,top=50000,width=0,height=0");
 
                 printWindow.document.write(printableContent.innerHTML);
                 printWindow.document.close();

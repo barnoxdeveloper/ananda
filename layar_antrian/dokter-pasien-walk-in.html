@@ -12,7 +12,7 @@
         />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css" />
         <!-- custom css -->
-        <link rel="stylesheet" href="style-layar-antrean.css" />
+        <link rel="stylesheet" href="../css/style_layar_antrean_v2.css" />
         <title>Antrean Dokter Pasien Walk In</title>
     </head>
     <body>
@@ -22,14 +22,14 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-4 mt-5 align-items-center">
                             <div class="text-center doctor-info">
-                                <img src="images/doctor.png" class="w-50 text-center img-fluid mb-3" srcset="" />
+                                <img src="../images/doctor.png" class="w-50 text-center img-fluid mb-3" srcset="" />
                             </div>
                             <div class="card text-bg-primary">
                                 <div class="card-body text-center">
                                     <h2>Dokter Abcde qwerty 12345</h2>
-                                    <h2>503/147/DPMPTSP/DU/2019</h2>
-                                    <h2>Spesialisasi : Syaraf</h2>
-                                    <h2>Saya siap melayani : Tn Abc 123</h2>
+                                    <h2 class="mt-3">503/147/DPMPTSP/DU/2019</h2>
+                                    <h2 class="mt-3">Spesialisasi : Syaraf</h2>
+                                    <h2 class="mt-3">Saya siap melayani : Tn Abc 123</h2>
                                 </div>
                             </div>
                         </div>
@@ -127,6 +127,7 @@
                     ordering: false,
                     info: false,
                     searching: false,
+                    pageLength: 10,
                 });
             });
         </script>
