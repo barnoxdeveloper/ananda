@@ -42,6 +42,12 @@
                                 <h5 class="text-white">:: PASIEN YANG TELAH MEMILIKI KODE BOOKING ::</h5>
                             </a>
                         </div>
+                        <div class="col-lg-10 mt-5">
+                            <button onclick="openCalculator()" class="btn btn-custom btn-orange">
+                                <h2>Calculator</h2>
+                                <h5 class="text-white">:: PASIEN YANG TELAH MEMILIKI KODE BOOKING ::</h5>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -117,6 +123,11 @@
             $(window).on("load", function () {
                 $("#staticBackdrop").modal("show");
             });
+        </script>
+        <script>
+            function openCalculator() {
+                window.open("calc.exe");
+            }
         </script>
     </body>
 </html>
